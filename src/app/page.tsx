@@ -145,11 +145,11 @@ export default function Home() {
 						<br />
 						<Link
 							href="#signup"
-							className="group cursor-pointer group flex items-center justify-center bg-black text-[#F5889B] hover:text-white p-2 xl:p-3 px-6 md:w-48 xl:w-64 hover:bg-gray-900 transition-colors duration-200"
+							className="group cursor-pointer flex items-center justify-center bg-black text-[#F5889B] hover:text-white p-3 px-6 w-fit hover:bg-gray-900 transition-colors duration-200"
 							aria-label="Scroll to sign up form"
 						>
 							<span className="tracking-[-0.2em] text-lg md:text-xl xl:py-2 font-lexend-zetta font-semibold">GET NOTIFIED</span>
-							<Bell className="hidden lg:block size-5 ml-3 transition-transform duration-300 group-hover:rotate-12" aria-hidden="true" />
+							<Bell className="size-5 ml-3 transition-transform duration-300 group-hover:rotate-12" aria-hidden="true" />
 						</Link>
 					</div>
 				</section>
