@@ -316,16 +316,16 @@ export default function Home() {
 						<br />
 						<div className="flex justify-center">
 							<Link
-								href="#"
+								href="https://t.me/+hofgAYWLewFmM2Zi"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="Join EVRO community on Telegram"
 								className="cursor-pointer group hover:bg-gray-900 hover:text-[#F5889B] transition-transform duration-300 bg-black text-white font-bold p-4 text-lg w-full flex items-center justify-center mb-1 md:w-100"
 							>
-								<b className="tracking-[-0.2em]">PARTICIPATE*</b>
+								<b className="tracking-[-0.2em]">JOIN COMMUNITY</b>
 								<ArrowRight className="w-6 h-6 ml-4 group-hover:translate-x-2 transition-transform duration-300" aria-hidden="true" />
 							</Link>
 						</div>
-					</div>
-					<div className="text-center text-xs tracking-wide sm:text-base font-medium">
-						<p>*Governance participation only affects protocol code, not assets.</p>
 					</div>
 				</div>
 			</section>
