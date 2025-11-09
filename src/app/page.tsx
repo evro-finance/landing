@@ -1,8 +1,8 @@
-import Link from "next/link";
+import AlertForm from "@/components/AlertForm";
+import { ArrowRight, Bell } from "lucide-react";
 import Image from "next/image";
-import { FaGithub } from "react-icons/fa";
-import { ArrowDown, ArrowRight, Bell } from "lucide-react";
-import TallyForm from "@/components/TallyForm";
+import Link from "next/link";
+import { FaGithub, FaTelegram } from "react-icons/fa";
 
 const stats = [
 	{
@@ -89,15 +89,26 @@ export default function Home() {
 								/>
 							</Link>
 						</div>
-						<div className="flex items-center gap-6 z-20">
+						<div className="flex items-center gap-3 md:gap-4 z-20">
 							<Link
 								href="https://github.com/evro-finance"
 								target="_blank"
 								rel="noopener noreferrer"
 								aria-label="View EVRO on GitHub"
-								className="inline-flex items-center justify-center"
+								className="inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 md:px-3 md:py-2 xl:px-4 xl:py-2.5 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-gray-900"
 							>
-								<FaGithub className="size-6 xl:size-10 md:text-[#F5889B]" />
+								<FaGithub className="size-3.5 md:size-4 xl:size-5" />
+								<span className="text-xs md:text-xs xl:text-sm font-medium">GitHub</span>
+							</Link>
+							<Link
+								href="https://t.me/+hofgAYWLewFmM2Zi"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="Join EVRO DAO on Telegram"
+								className="inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 md:px-3 md:py-2 xl:px-4 xl:py-2.5 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-gray-900"
+							>
+								<FaTelegram className="size-3.5 md:size-4 xl:size-5" />
+								<span className="text-xs md:text-xs xl:text-sm font-medium">Telegram</span>
 							</Link>
 						</div>
 					</div>
@@ -324,7 +335,7 @@ export default function Home() {
 				<div className="absolute inset-0 -z-10 bg-violet-200">
 				</div>
 				<div className="max-w-[2000px] mx-auto px-4">
-					<TallyForm />
+					<AlertForm />
 				</div>
 			</section>
 
