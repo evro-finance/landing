@@ -34,7 +34,7 @@ const coreFeatures = [
 		},
 	},
 	{
-		title: "Multi-Collateral Mechanism",
+		title: "Mvlti-Collateral Mechanism",
 		description: "Vaults automatically generate synthetic value units backed by digital collateral. All parameters are enforced on-chain and transparent to every participant.",
 		offset: "md:translate-y-52",
 		styles: {
@@ -53,7 +53,7 @@ const coreFeatures = [
 		},
 	},
 	{
-		title: "Immutable Protocol",
+		title: "Immvtable Protocol",
 		description: "EVRO's contracts operate without administrative control or upgrade authority. The immutability of the protocol is a foundational primitive that digital economies can rely on for predictable, censorship-resistant liquidity.",
 		offset: "md:translate-y-52",
 		styles: {
@@ -133,7 +133,7 @@ export default function Home() {
 					</div>
 					<div className="px-1 md:px-4 max-w-7xl mx-auto w-full">
 						<h1 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold tracking-[-0.2em] text-gray-900 mb-6 sm:mb-8 leading-tight">
-							AUTONOMOUS,<br />
+							AVTONOMOVS,<br />
 							OPEN SOURCE,<br />
 							VALUE.
 						</h1>
@@ -178,7 +178,7 @@ export default function Home() {
 					<div className="md:grid md:grid-cols-2 gap-16 lg:px-[3%] 2xl:px-[10%] md:items-start md:py-6 xl:py-28">
 						<div className="flex items-center justify-center h-full">
 							<h2 className="text-2xl xl:text-5xl font-bold tracking-[-0.2em] xl:px-10 self-center">
-								EVRO EXISTS FOR BUILDERS, SAVERS, AND PROTOCOLS THAT RELY ON AUTONOMOUS LIQUIDITY.
+								EVRO EXISTS FOR BUILDERS, SAVERS, AND PROTOCOLS THAT RELY ON AVTONOMOVS LIQVIDITY.
 							</h2>
 						</div>
 						<div className="text-lg sm:text-xl xl:text-3xl font-light mt-12 lg:mt-0 xl:px-10 h-full">
@@ -253,10 +253,10 @@ export default function Home() {
 							style={{ WebkitTextStroke: '4px #EFA960' }}
 							aria-hidden="true"
 						>
-							CORE FEATURES
+							CORE FEATVRES
 						</span>
 						<span className="relative text-gray-900">
-							CORE FEATURES
+							CORE FEATVRES
 						</span>
 					</h2>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-6 xl:gap-10 relative xl:px-[10%] xl:pb-[5%] max-w-[1400px] mx-auto">
@@ -307,7 +307,7 @@ export default function Home() {
 				<div className="max-w-[2000px] mx-auto px-4">
 					<div className="text-center space-y-6 max-w-2xl">
 						<h2 className="text-2xl sm:text-4xl font-bold tracking-[-0.2em] mt-10">
-							EVRO IS COMMUNITY GOVERNED AND OPEN-SOURCE
+							EVRO IS COMMVNITY GOVERNED AND OPEN-SOURCE
 						</h2>
 						<p className="text-lg sm:text-xl font-medium mb-3 mx-3">
 							THE PROTOCOL OPERATES WITHOUT CENTRAL CUSTODY OR MANAGEMENT. ITS ONLY ROLE IS ALIGNING
