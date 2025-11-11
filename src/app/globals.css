@@ -128,3 +128,31 @@
 	mix-blend-mode: soft-light;
 	pointer-events: none;
 }
+
+/* U to V morph animation */
+@keyframes morphUtoV {
+	0% {
+		content: 'U';
+	}
+	100% {
+		content: 'V';
+	}
+}
+
+.u-to-v-animate {
+	display: inline-block;
+	position: relative;
+	animation: letterMorph 2s ease-in-out 0.5s forwards;
+}
+
+@keyframes letterMorph {
+	0% {
+		transform: scaleY(1) translateY(0);
+	}
+	50% {
+		transform: scaleY(0.95) translateY(2%);
+	}
+	100% {
+		transform: scaleY(1) translateY(0);
+	}
+}
