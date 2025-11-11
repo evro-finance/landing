@@ -131,7 +131,7 @@ export default function Home() {
 							<source src="/assets/looptrim.webm" type="video/webm" />
 						</video>
 					</div>
-					<div className="xl:pl-18">
+					<div className="px-1 md:px-4 max-w-7xl mx-auto w-full">
 						<h1 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold tracking-[-0.2em] text-gray-900 mb-6 sm:mb-8 leading-tight">
 							AUTONOMOUS,<br />
 							OPEN SOURCE,<br />
@@ -340,15 +340,15 @@ export default function Home() {
 			</section>
 
 			{/* Footer */}
-			<footer className="bg-[#757BA3] pb-5">
-				<div className="w-full aspect-3085/812 relative overflow-hidden">
+			<footer className="bg-[#757BA3] px-2 py-8 md:px-25 lg:px-20">
+				<div className="w-full aspect-2058/544 relative overflow-visible max-w-[2000px] max-h-[650px] mx-auto">
 					<img
-						src="/assets/evro-large.svg"
+						src="/assets/evro-large.webp"
 						alt="Detailed EVRO logo."
-						className="w-full h-full scale-x-107 mix-blend-color-dodge opacity-33 hover:opacity-100 transition-opacity duration-300"
+						className="w-full h-full object-contain mix-blend-color-dodge opacity-33 hover:opacity-100 transition-opacity duration-300"
 					/>
 				</div>
-				<div className="max-w-[2000px] mx-auto text-center px-2 py-8 md:px-25 lg:px-20">
+				<div className="max-w-[2000px] mx-auto text-center">
 					<p className="font-light text-2xl text-gray-800 mt-5 uppercase">
 						EVRO IS AN AUTONOMOUS SOFTWARE DEPLOYED ON PUBLIC BLOCKCHAINS.
 						IT DOES NOT ISSUE, HOLD OR REDEEM ASSETS AND IS NOT A FINANCIAL
