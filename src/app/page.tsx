@@ -1,4 +1,5 @@
 import AlertForm from "@/components/AlertForm";
+import AnimatedHeading from "@/components/AnimatedHeading";
 import { ArrowRight, Bell } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -127,16 +128,13 @@ export default function Home() {
 							playsInline
 							preload="none"
 							className="absolute top-0 right-0 h-full w-auto min-w-full min-h-full object-cover"
+							title="Decorative background video"
 						>
 							<source src="/assets/looptrim.webm" type="video/webm" />
 						</video>
 					</div>
 					<div className="px-1 md:px-4 max-w-7xl mx-auto w-full">
-						<h1 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold tracking-[-0.2em] text-gray-900 mb-6 sm:mb-8 leading-tight">
-							AVTONOMOVS,<br />
-							OPEN SOURCE,<br />
-							VALUE.
-						</h1>
+						<AnimatedHeading />
 						<p className="text-lg xl:text-xl font-light text-gray-900 max-w-lg">
 							<b className="font-bold">EVRO</b> is an open-source protocol deployed on Gnosis that enables you to <b className="font-bold">CREATE,
 								MANAGE AND BALANCE COLLATERALIZED VAULTS</b> without issuers, custodians, or intermediaries.
@@ -156,7 +154,10 @@ export default function Home() {
 			</div>
 
 			{/* Motivation Section */}
-			<section className="relative pt-18 pb-18 sm:pb-36 flex flex-col justify-center -mt-6 sm:-mt-12 md:-mt-28 xl:-mt-40 z-10">
+			<section
+				className="relative pt-18 pb-18 sm:pb-36 flex flex-col justify-center -mt-6 sm:-mt-12 md:-mt-28 xl:-mt-40 z-10"
+				aria-labelledby="motivation-heading"
+			>
 				<div className="absolute inset-0 -z-10">
 					<picture>
 						{/* Mobile */}
@@ -177,8 +178,12 @@ export default function Home() {
 				<div className="max-w-[2000px] mx-auto px-4">
 					<div className="md:grid md:grid-cols-2 gap-16 lg:px-[3%] 2xl:px-[10%] md:items-start md:py-6 xl:py-28">
 						<div className="flex items-center justify-center h-full">
-							<h2 className="text-2xl xl:text-5xl font-bold tracking-[-0.2em] xl:px-10 self-center">
-								EVRO EXISTS FOR BUILDERS, SAVERS, AND PROTOCOLS THAT RELY ON AVTONOMOVS LIQVIDITY.
+							<h2
+								id="motivation-heading"
+								className="text-2xl xl:text-5xl font-bold tracking-[-0.2em] xl:px-10 self-center"
+								aria-label="EVRO exists for builders, savers, and protocols that rely on autonomous liquidity."
+							>
+								<span aria-hidden="true">EVRO EXISTS FOR BUILDERS, SAVERS, AND PROTOCOLS THAT RELY ON AVTONOMOVS LIQVIDITY.</span>
 							</h2>
 						</div>
 						<div className="text-lg sm:text-xl xl:text-3xl font-light mt-12 lg:mt-0 xl:px-10 h-full">
@@ -196,7 +201,10 @@ export default function Home() {
 			</section>
 
 			{/* Stats Section */}
-			<section className="relative px-2 text-white pt-18 pb-12 sm:pt-32 sm:pb-18 xl:pt-48 xl:pb-36 -mt-10 lg:-mt-24 xl:-mt-48 z-10">
+			<section
+				className="relative px-2 text-white pt-18 pb-12 sm:pt-32 sm:pb-18 xl:pt-48 xl:pb-36 -mt-10 lg:-mt-24 xl:-mt-48 z-10"
+				aria-label="Protocol Statistics"
+			>
 				<div className="absolute inset-0 -z-10" style={{ height: 'calc(100% + 50px)' }}>
 					<picture>
 						{/* Mobile */}
@@ -228,7 +236,10 @@ export default function Home() {
 
 
 			{/* Core Features Section */}
-			<section className="relative pt-24 sm:py-24 bottom-20 flex flex-col justify-center">
+			<section
+				className="relative pt-24 sm:py-24 bottom-20 flex flex-col justify-center"
+				aria-labelledby="core-features-heading"
+			>
 				<div className="absolute inset-0 -z-20" style={{ height: 'calc(100% + 150px)' }}>
 					<picture>
 						{/* Mobile */}
@@ -247,7 +258,11 @@ export default function Home() {
 					</picture>
 				</div>
 				<div className="max-w-[2000px] mx-auto px-5 pt-20 pb-4 sm:pb-28">
-					<h2 className="relative tracking-[-0.2em] text-3xl md:text-5xl xl:text-7xl font-bold text-center mb-16 xl:mb-30 wrap-break-word sm:break-normal mr-4">
+					<h2
+						id="core-features-heading"
+						className="relative tracking-[-0.2em] text-3xl md:text-5xl xl:text-7xl font-bold text-center mb-16 xl:mb-30 wrap-break-word sm:break-normal mr-4"
+						aria-label="Core Features"
+					>
 						<span
 							className="absolute top-0 left-0 w-full h-full text-transparent"
 							style={{ WebkitTextStroke: '4px #EFA960' }}
@@ -255,7 +270,7 @@ export default function Home() {
 						>
 							CORE FEATVRES
 						</span>
-						<span className="relative text-gray-900">
+						<span className="relative text-gray-900" aria-hidden="true">
 							CORE FEATVRES
 						</span>
 					</h2>
@@ -286,7 +301,10 @@ export default function Home() {
 			</section>
 
 			{/* Community Section */}
-			<section className="relative py-6 pt-2 -mt-4 md:py-28 flex flex-col justify-center">
+			<section
+				className="relative py-6 pt-2 -mt-4 md:py-28 flex flex-col justify-center"
+				aria-labelledby="community-heading"
+			>
 				<div className="absolute inset-0 -z-10">
 					<picture>
 						{/* Mobile */}
@@ -306,8 +324,12 @@ export default function Home() {
 				</div>
 				<div className="max-w-[2000px] mx-auto px-4">
 					<div className="text-center space-y-6 max-w-2xl">
-						<h2 className="text-2xl sm:text-4xl font-bold tracking-[-0.2em] mt-10">
-							EVRO IS COMMVNITY GOVERNED AND OPEN-SOURCE
+						<h2
+							id="community-heading"
+							className="text-2xl sm:text-4xl font-bold tracking-[-0.2em] mt-10"
+							aria-label="EVRO is community governed and open-source"
+						>
+							<span aria-hidden="true">EVRO IS COMMVNITY GOVERNED AND OPEN-SOVRCE</span>
 						</h2>
 						<p className="text-lg sm:text-xl font-medium mb-3 mx-3">
 							THE PROTOCOL OPERATES WITHOUT CENTRAL CUSTODY OR MANAGEMENT. ITS ONLY ROLE IS ALIGNING
@@ -322,7 +344,7 @@ export default function Home() {
 								aria-label="Join EVRO community on Telegram"
 								className="cursor-pointer group hover:bg-gray-900 hover:text-[#F5889B] transition-transform duration-300 bg-black text-white font-bold p-4 text-lg w-full flex items-center justify-center mb-1 md:w-100"
 							>
-								<b className="tracking-[-0.2em]">JOIN COMMUNITY</b>
+								<b className="tracking-[-0.2em]">JOIN COMMVNITY</b>
 								<ArrowRight className="w-6 h-6 ml-4 group-hover:translate-x-2 transition-transform duration-300" aria-hidden="true" />
 							</Link>
 						</div>
