@@ -2,7 +2,7 @@
 
 Landing page for EVRO, an open-source protocol deployed on Gnosis that enables creating, managing, and balancing collateralized vaults without issuers, custodians, or intermediaries. Built on Liquity V2 principles, EVRO operates through fully decentralized smart contracts with no administrative control and no upgrade authority.
 
-![EVRO Logo](./public/assets/evro-large.svg)
+<img width="830" alt="EVRO" src="https://opengraph.b-cdn.net/production/images/16ffb740-ca48-493d-a677-731c82273a35.png?token=jijjvjEDRCZwBMk6yWXRiMEg6rJBfl0rS5ixeBUIzkg&height=630&width=1200&expires=33298877443" />
 
 ## Getting Started
 
