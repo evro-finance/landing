@@ -1,5 +1,6 @@
 import AlertForm from "@/components/AlertForm";
 import AnimatedHeading from "@/components/AnimatedHeading";
+import AnimatedIcon from "@/components/AnimatedIcon";
 import { ArrowRight, Bell } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,6 +28,7 @@ const coreFeatures = [
 	{
 		title: "Stability Pools",
 		description: "Autonomous pools distribute collateral proceeds according to deterministic smart contract rules. No discretionary control or managed yield.",
+		icon: "/assets/stability-pools.svg",
 		offset: "",
 		styles: {
 			paddingTop: "md:pt-18 xl:pt-28",
@@ -37,6 +39,7 @@ const coreFeatures = [
 	{
 		title: "Mvlti-Collateral Mechanism",
 		description: "Vaults automatically generate synthetic value units backed by digital collateral. All parameters are enforced on-chain and transparent to every participant.",
+		icon: "/assets/multi.svg",
 		offset: "md:translate-y-52",
 		styles: {
 			paddingTop: "md:pt-18 xl:pt-28",
@@ -46,6 +49,7 @@ const coreFeatures = [
 	{
 		title: "Seamless Integration",
 		description: "Designed for composability, wallets, interfaces, and DeFi tools can interact with EVRO contracts directly through permissionless endpoints.",
+		icon: "/assets/seamless.svg",
 		offset: "",
 		styles: {
 			paddingTop: "md:pt-1",
@@ -56,6 +60,7 @@ const coreFeatures = [
 	{
 		title: "Immvtable Protocol",
 		description: "EVRO's contracts operate without administrative control or upgrade authority. The immutability of the protocol is a foundational primitive that digital economies can rely on for predictable, censorship-resistant liquidity.",
+		icon: "/assets/immutable.svg",
 		offset: "md:translate-y-52",
 		styles: {
 			paddingTop: "md:pt-1 xl:pt-5",
@@ -287,7 +292,15 @@ export default function Home() {
 									key={feature.title}
 									className={`${baseClasses} ${feature.offset} ${styleClasses}`}
 								>
-									<h3 className={`text-2xl sm:text-3xl xl:text-4xl font-bold tracking-[-0.2em] mb-6 ${feature.styles.titleMarginTop}`}>
+									<AnimatedIcon
+										src={feature.icon}
+										alt=""
+										width={160}
+										height={160}
+										containerClassName={`mb-6 ${feature.styles.titleMarginTop} h-42 w-auto object-fill`}
+										className="w-full h-full object-contain max-h-[250px] max-w-[450px]"
+									/>
+									<h3 className={`text-2xl sm:text-3xl xl:text-4xl font-bold tracking-[-0.2em] mb-6`}>
 										{feature.title}
 									</h3>
 									<p className="text-lg xl:text-2xl font-light">
