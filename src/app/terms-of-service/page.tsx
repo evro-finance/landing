@@ -4,8 +4,8 @@ import Link from "next/link";
 import { FaGithub, FaTelegram } from "react-icons/fa";
 
 export const metadata: Metadata = {
-	title: "Terms of Service | EVRO",
-	description: "Terms of Service for EVRO DAO LLC and the evro.finance website.",
+	title: "Terms of Service",
+	description: "Read the Terms of Service for EVRO DAO LLC and the evro.finance website. Learn about website usage, protocol disclaimers, liability, intellectual property, and applicable law for the EVRO decentralized protocol.",
 };
 
 export default function TermsOfService() {

@@ -4,8 +4,8 @@ import Link from "next/link";
 import { FaGithub, FaTelegram } from "react-icons/fa";
 
 export const metadata: Metadata = {
-	title: "Privacy Policy | EVRO",
-	description: "Privacy Policy for EVRO DAO LLC and the evro.finance website.",
+	title: "Privacy Policy",
+	description: "Learn how EVRO DAO LLC collects and processes information on evro.finance. Understand our data practices, cookies, third-party services, data security, and retention policies for the EVRO protocol website.",
 };
 
 export default function PrivacyPolicy() {

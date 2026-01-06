@@ -14,8 +14,11 @@ const lexendZetta = Lexend_Zetta({
 
 export const metadata: Metadata = {
 	metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.evro.finance"),
-	title: "EVRO",
-	description: "An open-source protocol that maintains synthetic value units through fully decentralized smart-contract mechanics.",
+	title: {
+		default: "EVRO | Decentralized Collateralized Vaults Protocol on Gnosis",
+		template: "%s | EVRO",
+	},
+	description: "EVRO is an open-source DeFi protocol on Gnosis that enables creating, managing, and balancing collateralized vaults without issuers, custodians, or intermediaries. Built on Liquity V2 principles with fully decentralized smart contracts, no administrative control, and immutable governance.",
 	icons: {
 		icon: "/EVRO.svg",
 		apple: "/EVRO.svg",
@@ -23,8 +26,8 @@ export const metadata: Metadata = {
 	openGraph: {
 		url: "https://www.evro.finance/",
 		type: "website",
-		title: "EVRO",
-		description: "An open-source protocol that maintains synthetic value units through fully decentralized smart-contract mechanics.",
+		title: "EVRO | Decentralized Collateralized Vaults Protocol on Gnosis",
+		description: "EVRO is an open-source DeFi protocol on Gnosis that enables creating, managing, and balancing collateralized vaults without issuers, custodians, or intermediaries. Built on Liquity V2 principles with fully decentralized smart contracts, no administrative control, and immutable governance.",
 		images: [
 			{
 				url: "https://opengraph.b-cdn.net/production/images/16ffb740-ca48-493d-a677-731c82273a35.png?token=jijjvjEDRCZwBMk6yWXRiMEg6rJBfl0rS5ixeBUIzkg&height=630&width=1200&expires=33298877443",
@@ -36,8 +39,8 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "EVRO",
-		description: "An open-source protocol that maintains synthetic value units through fully decentralized smart-contract mechanics.",
+		title: "EVRO | Decentralized Collateralized Vaults Protocol on Gnosis",
+		description: "EVRO is an open-source DeFi protocol on Gnosis that enables creating, managing, and balancing collateralized vaults without issuers, custodians, or intermediaries. Built on Liquity V2 principles with fully decentralized smart contracts, no administrative control, and immutable governance.",
 		images: ["https://opengraph.b-cdn.net/production/images/16ffb740-ca48-493d-a677-731c82273a35.png?token=jijjvjEDRCZwBMk6yWXRiMEg6rJBfl0rS5ixeBUIzkg&height=630&width=1200&expires=33298877443"],
 	},
 };
