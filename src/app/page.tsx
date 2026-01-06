@@ -447,12 +447,20 @@ export default function Home() {
 						className="w-full h-full object-contain mix-blend-color-dodge opacity-33 hover:opacity-100 transition-opacity duration-300"
 					/>
 				</div>
-				<div className="max-w-[2000px] mx-auto text-center">
-					<p className="font-light text-2xl text-gray-800 mt-5 uppercase">
+				<div className="max-w-[2000px] mx-auto text-center space-y-6">
+					<div className="flex flex-wrap gap-4 md:gap-8 justify-center items-center">
+						<Link href="/privacy-policy" className="text-gray-800 hover:text-[#F5889B] font-medium transition-colors uppercase font-lexend-zetta text-sm md:text-base">
+							Privacy Policy
+						</Link>
+						<Link href="/terms-of-service" className="text-gray-800 hover:text-[#F5889B] font-medium transition-colors uppercase font-lexend-zetta text-sm md:text-base">
+							Terms of Service
+						</Link>
+					</div>
+					<p className="font-light text-2xl text-gray-800 uppercase">
 						EVRO IS AN AUTONOMOUS SOFTWARE DEPLOYED ON PUBLIC BLOCKCHAINS.
 						IT DOES NOT ISSUE, HOLD OR REDEEM ASSETS AND IS NOT A FINANCIAL
 						SERVICE OR PRODUCT. INTERACTIONS WITH THE PROTOCOL OCCUR DIRECTLY
-						THROUGH SMART CONTRACTS AT THE USER'S INITIATIVE. NO ENTITY PROVIDES
+						THROUGH SMART CONTRACTS AT THE USER&apos;S INITIATIVE. NO ENTITY PROVIDES
 						INVESTMENT ADVICE, CUSTODY or GUARANTEES OF VALUE STABILITY.
 					</p>
 				</div>
