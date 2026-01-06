@@ -1,10 +1,42 @@
+"use client";
+
 import AlertForm from "@/components/AlertForm";
 import AnimatedHeading from "@/components/AnimatedHeading";
 import AnimatedIcon from "@/components/AnimatedIcon";
+import RollingCounter from "@/components/RollingCounter";
 import { ArrowRight, Bell } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaGithub, FaTelegram } from "react-icons/fa";
+import { motion, useScroll, useTransform } from "motion/react";
+import { useRef } from "react";
+
+const fadeInUp = {
+	initial: { opacity: 0, y: 30 },
+	whileInView: { opacity: 1, y: 0 },
+	transition: { duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }
+};
+
+const staggerContainer = {
+	initial: {},
+	whileInView: {
+		transition: {
+			staggerChildren: 0.1
+		}
+	}
+};
+
+const slideInLeft = {
+	initial: { opacity: 0, x: -50 },
+	whileInView: { opacity: 1, x: 0 },
+	transition: { duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }
+};
+
+const slideInRight = {
+	initial: { opacity: 0, x: 50 },
+	whileInView: { opacity: 1, x: 0 },
+	transition: { duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }
+};
 
 const stats = [
 	{
@@ -30,47 +62,39 @@ const coreFeatures = [
 		description: "Autonomous pools distribute collateral proceeds according to deterministic smart contract rules. No discretionary control or managed yield.",
 		icon: "/assets/stability-pools.svg",
 		offset: "",
-		styles: {
-			paddingTop: "md:pt-18 xl:pt-28",
-			paddingBottom: "xl:pb-20",
-			titleMarginTop: "mt-10",
-		},
 	},
 	{
 		title: "Mvlti-Collateral Mechanism",
 		description: "Vaults automatically generate synthetic value units backed by digital collateral. All parameters are enforced on-chain and transparent to every participant.",
 		icon: "/assets/multi.svg",
-		offset: "md:translate-y-52",
-		styles: {
-			paddingTop: "md:pt-18 xl:pt-28",
-			titleMarginTop: "mt-10",
-		},
+		offset: "md:translate-y-32",
 	},
 	{
 		title: "Seamless Integration",
 		description: "Designed for composability, wallets, interfaces, and DeFi tools can interact with EVRO contracts directly through permissionless endpoints.",
 		icon: "/assets/seamless.svg",
 		offset: "",
-		styles: {
-			paddingTop: "md:pt-1",
-			paddingBottom: "pb-30 xl:pb-[15%]",
-			titleMarginTop: "mt-14",
-		},
 	},
 	{
 		title: "Immvtable Protocol",
 		description: "EVRO's contracts operate without administrative control or upgrade authority. The immutability of the protocol is a foundational primitive that digital economies can rely on for predictable, censorship-resistant liquidity.",
 		icon: "/assets/immutable.svg",
-		offset: "md:translate-y-52",
-		styles: {
-			paddingTop: "md:pt-1 xl:pt-5",
-			paddingBottom: "pb-30 md:pb-40",
-			titleMarginTop: "mt-14",
-		},
+		offset: "md:translate-y-32",
 	},
 ];
 
 export default function Home() {
+	const coreFeaturesRef = useRef(null);
+	const { scrollYProgress } = useScroll({
+		target: coreFeaturesRef,
+		offset: ["start end", "end start"]
+	});
+
+	const rotate = useTransform(scrollYProgress, [0, 1], [0, 90]);
+	const rotateReverse = useTransform(scrollYProgress, [0, 1], [90, 0]);
+	const parallax1 = useTransform(scrollYProgress, [0, 1], [0, -50]);
+	const parallax2 = useTransform(scrollYProgress, [0, 1], [0, 50]);
+
 	return (
 		<div>
 			{/* Skip to content link */}
@@ -80,50 +104,49 @@ export default function Home() {
 			>
 				Skip to content
 			</a>
-			<div className="mx-auto px-3 md:px-4 lg:px-6 bg-[#E7E1F1] noise-texture mix-blend-luminosity">
-				<nav className="py-7">
-					<div className="flex items-center justify-between px-1 md:px-4 max-w-7xl mx-auto">
-						<div className="flex items-center">
-							<Link href="/">
-								<Image
-									src="/assets/Evro-Logo-wordmark.svg"
-									height={80}
-									width={200}
-									alt="Evro Logo"
-									className="w-16 xl:w-20 h-auto"
-									priority
-								/>
-							</Link>
-						</div>
-						<div className="flex items-center gap-3 md:gap-4 z-20">
-							<Link
-								href="https://github.com/evro-finance"
-								target="_blank"
-								rel="noopener noreferrer"
-								aria-label="View EVRO on GitHub"
-								className="inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 md:px-3 md:py-2 xl:px-4 xl:py-2.5 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-gray-900"
-							>
-								<FaGithub className="size-3.5 md:size-4 xl:size-5" />
-								<span className="text-xs md:text-xs xl:text-sm font-medium">GitHub</span>
-							</Link>
-							<Link
-								href="https://t.me/+hofgAYWLewFmM2Zi"
-								target="_blank"
-								rel="noopener noreferrer"
-								aria-label="Join EVRO DAO on Telegram"
-								className="inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 md:px-3 md:py-2 xl:px-4 xl:py-2.5 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-gray-900"
-							>
-								<FaTelegram className="size-3.5 md:size-4 xl:size-5" />
-								<span className="text-xs md:text-xs xl:text-sm font-medium">Telegram</span>
-							</Link>
-						</div>
+			<nav className="sticky top-0 z-50 py-4 md:py-6 bg-[#E7E1F1]/90 backdrop-blur-sm border-b border-[#E7E1F1]">
+				<div className="flex items-center justify-between px-4 md:px-8 max-w-7xl mx-auto">
+					<div className="flex items-center">
+						<Link href="/">
+							<Image
+								src="/assets/Evro-Logo-wordmark.svg"
+								height={80}
+								width={200}
+								alt="Evro Logo"
+								className="w-16 xl:w-20 h-auto"
+								priority
+							/>
+						</Link>
 					</div>
-				</nav>
-
-				<section id="main-content" className="flex flex-col pt-8 pb-16 md:pb-40 xl:pb-56">
+					<div className="flex items-center gap-3 md:gap-4 z-20">
+						<Link
+							href="https://github.com/evro-finance"
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="View EVRO on GitHub"
+							className="inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 md:px-3 md:py-2 xl:px-4 xl:py-2.5 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-gray-900"
+						>
+							<FaGithub className="size-3.5 md:size-4 xl:size-5" />
+							<span className="text-xs md:text-xs xl:text-sm font-medium">GitHub</span>
+						</Link>
+						<Link
+							href="https://t.me/+hofgAYWLewFmM2Zi"
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="Join EVRO DAO on Telegram"
+							className="inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 md:px-3 md:py-2 xl:px-4 xl:py-2.5 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200 text-gray-900"
+						>
+							<FaTelegram className="size-3.5 md:size-4 xl:size-5" />
+							<span className="text-xs md:text-xs xl:text-sm font-medium">Telegram</span>
+						</Link>
+					</div>
+				</div>
+			</nav>
+			<div className="mx-auto bg-[#E7E1F1] noise-texture mix-blend-luminosity">
+				<section id="main-content" className="flex flex-col pt-8 pb-16 md:pb-32 xl:pb-48 px-4 md:px-8 relative overflow-hidden">
 					{/* Triangle video cut out for xl screens */}
 					<div
-						className="hidden md:block absolute top-0 right-0 md:w-xs xl:w-[960px] h-full"
+						className="hidden md:block absolute top-0 right-0 md:w-1/2 xl:w-[960px] h-full pointer-events-none"
 						aria-hidden="true"
 					>
 						<video
@@ -132,13 +155,13 @@ export default function Home() {
 							muted
 							playsInline
 							preload="none"
-							className="absolute top-0 right-0 h-full w-auto min-w-full min-h-full object-cover"
+							className="absolute top-0 right-0 h-full w-full object-cover"
 							title="Decorative background video"
 						>
 							<source src="/assets/looptrim.webm" type="video/webm" />
 						</video>
 					</div>
-					<div className="px-1 md:px-4 max-w-7xl mx-auto w-full">
+					<div className="max-w-7xl mx-auto w-full relative z-10">
 						<AnimatedHeading />
 						<p className="text-lg xl:text-xl font-light text-gray-900 max-w-lg">
 							<b className="font-bold">EVRO</b> is an open-source protocol deployed on Gnosis that enables you to <b className="font-bold">CREATE,
@@ -180,9 +203,15 @@ export default function Home() {
 						<img src="/assets/img-motivation-xl.png" alt="" className="w-full h-full object-fill" aria-hidden="true" />
 					</picture>
 				</div>
-				<div className="max-w-[2000px] mx-auto px-4">
+				<motion.div
+					className="max-w-[2000px] mx-auto px-4 relative z-20 text-gray-900"
+					variants={staggerContainer}
+					initial="initial"
+					whileInView="whileInView"
+					viewport={{ once: true, amount: 0.1 }}
+				>
 					<div className="md:grid md:grid-cols-2 gap-16 lg:px-[3%] 2xl:px-[10%] md:items-start md:py-6 xl:py-28">
-						<div className="flex items-center justify-center h-full">
+						<motion.div className="flex items-center justify-center h-full" variants={fadeInUp}>
 							<h2
 								id="motivation-heading"
 								className="text-2xl xl:text-5xl font-bold tracking-[-0.2em] xl:px-10 self-center"
@@ -190,8 +219,8 @@ export default function Home() {
 							>
 								<span aria-hidden="true">EVRO EXISTS FOR BUILDERS, SAVERS, AND PROTOCOLS THAT RELY ON AVTONOMOVS LIQVIDITY.</span>
 							</h2>
-						</div>
-						<div className="text-lg sm:text-xl xl:text-3xl font-light mt-12 lg:mt-0 xl:px-10 h-full">
+						</motion.div>
+						<motion.div className="text-lg sm:text-xl xl:text-3xl font-light mt-12 lg:mt-0 xl:px-10 h-full" variants={fadeInUp}>
 							<p className="mb-8">
 								By aligning incentives among vault creators, liquidators, and integrators,
 								the system sustains value stability through transparent, trustless automation.
@@ -200,9 +229,9 @@ export default function Home() {
 								Decentralized design ensures that once deployed, the protocol operates independently.
 								EVRO is governed by code, not counterparties.
 							</p>
-						</div>
+						</motion.div>
 					</div>
-				</div>
+				</motion.div>
 			</section>
 
 			{/* Stats Section */}
@@ -227,24 +256,44 @@ export default function Home() {
 						<img src="/assets/img-stats-xl.png" alt="" className="w-full h-full" aria-hidden="true" />
 					</picture>
 				</div>
-				<div className="max-w-5xl grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10 xl:gap-5 mx-auto">
+				<motion.div
+					className="max-w-5xl grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10 xl:gap-5 mx-auto relative z-20"
+					variants={staggerContainer}
+					initial="initial"
+					whileInView="whileInView"
+					viewport={{ once: true, amount: 0.1 }}
+				>
 					{stats.map((stat) => (
-						<div key={stat.value} className="flex flex-col items-center justify-center">
-							<div className="text-4xl xl:text-5xl font-bold tracking-[-0.15em] mb-2 sm:mb-4 tabular-nums font-lexend-zetta">{stat.value}</div>
+						<motion.div key={stat.value} className="flex flex-col items-center justify-center" variants={fadeInUp}>
+							<RollingCounter
+								value={stat.value}
+								className="text-4xl xl:text-5xl font-bold tracking-[-0.15em] mb-2 sm:mb-4 tabular-nums font-lexend-zetta"
+							/>
 							<div className="text-xs md:text-sm xl:text-base font-lexend-zetta">{stat.labelLineOne}</div>
 							<div className="text-xs md:text-sm xl:text-base font-lexend-zetta">{stat.labelLineTwo}</div>
-						</div>
+						</motion.div>
 					))}
-				</div>
+				</motion.div>
 			</section>
 
 
 
 			{/* Core Features Section */}
 			<section
-				className="relative pt-24 sm:py-24 bottom-20 flex flex-col justify-center"
+				ref={coreFeaturesRef}
+				className="relative pt-24 sm:py-24 -mt-10 lg:-mt-24 flex flex-col justify-center overflow-hidden"
 				aria-labelledby="core-features-heading"
 			>
+				{/* Abstract Shapes */}
+				<motion.div
+					style={{ rotate, y: parallax1 }}
+					className="absolute top-1/4 left-[-10%] w-64 h-64 bg-[#F5889B]/10 rounded-full blur-3xl -z-10"
+				/>
+				<motion.div
+					style={{ rotate: rotateReverse, y: parallax2 }}
+					className="absolute bottom-1/4 right-[-5%] w-96 h-96 bg-[#6C3AED]/5 rounded-full blur-3xl -z-10"
+				/>
+
 				<div className="absolute inset-0 -z-20" style={{ height: 'calc(100% + 150px)' }}>
 					<picture>
 						{/* Mobile */}
@@ -265,7 +314,7 @@ export default function Home() {
 				<div className="max-w-[2000px] mx-auto px-5 pt-20 pb-4 sm:pb-28">
 					<h2
 						id="core-features-heading"
-						className="relative tracking-[-0.2em] text-3xl md:text-5xl xl:text-7xl font-bold text-center mb-16 xl:mb-30 wrap-break-word sm:break-normal mr-4"
+						className="relative tracking-[-0.2em] text-3xl md:text-5xl xl:text-7xl font-bold text-center mb-12 xl:mb-20 wrap-break-word sm:break-normal mr-4"
 						aria-label="Core Features"
 					>
 						<span
@@ -279,37 +328,45 @@ export default function Home() {
 							CORE FEATVRES
 						</span>
 					</h2>
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-6 xl:gap-10 relative xl:px-[10%] xl:pb-[5%] max-w-[1400px] mx-auto">
-						{coreFeatures.map((feature) => {
-							const baseClasses = "bg-[#ECF2E8BF] p-4 py-8 my-1 md:my-0 md:p-8";
-							const styleClasses = [
-								feature.styles.paddingTop,
-								feature.styles.paddingBottom,
-							].filter(Boolean).join(" ");
+					<motion.div
+						className="grid grid-cols-1 md:grid-cols-2 gap-6 xl:gap-10 relative xl:px-[10%] xl:pb-[5%] max-w-[1400px] mx-auto"
+						variants={staggerContainer}
+						initial="initial"
+						whileInView="whileInView"
+						viewport={{ once: true, amount: 0.1 }}
+					>
+						{coreFeatures.map((feature, index) => {
+							const baseClasses = "bg-[#ECF2E8BF] p-8 md:p-12 text-gray-900 flex flex-col justify-start min-h-[400px]";
+
+							// Zigzag: left, right, left, right
+							const variant = index % 2 === 0 ? slideInLeft : slideInRight;
 
 							return (
-								<div
+								<motion.div
 									key={feature.title}
-									className={`${baseClasses} ${feature.offset} ${styleClasses}`}
+									className={`${baseClasses} ${feature.offset}`}
+									variants={variant}
 								>
 									<AnimatedIcon
 										src={feature.icon}
 										alt=""
-										width={160}
-										height={160}
-										containerClassName={`mb-6 ${feature.styles.titleMarginTop} h-42 w-auto object-fill`}
-										className="w-full h-full object-contain max-h-[250px] max-w-[450px]"
+										width={120}
+										height={120}
+										containerClassName="mb-12 h-32 w-full flex items-center justify-start"
+										className="h-full w-auto object-contain max-h-[140px]"
 									/>
-									<h3 className={`text-2xl sm:text-3xl xl:text-4xl font-bold tracking-[-0.2em] mb-6`}>
-										{feature.title}
-									</h3>
-									<p className="text-lg xl:text-2xl font-light">
-										{feature.description}
-									</p>
-								</div>
+									<div className="space-y-6">
+										<h3 className="text-2xl sm:text-3xl xl:text-4xl font-bold tracking-[-0.2em] leading-tight">
+											{feature.title}
+										</h3>
+										<p className="text-lg xl:text-xl font-light leading-relaxed opacity-90">
+											{feature.description}
+										</p>
+									</div>
+								</motion.div>
 							);
 						})}
-					</div>
+					</motion.div>
 				</div>
 			</section>
 
@@ -335,21 +392,28 @@ export default function Home() {
 						<img src="/assets/img-community-xl.png" alt="" className="w-full h-full" aria-hidden="true" />
 					</picture>
 				</div>
-				<div className="max-w-[2000px] mx-auto px-4">
+				<motion.div
+					className="max-w-[2000px] mx-auto px-4 relative z-20 text-gray-900"
+					variants={staggerContainer}
+					initial="initial"
+					whileInView="whileInView"
+					viewport={{ once: true, amount: 0.1 }}
+				>
 					<div className="text-center space-y-6 max-w-2xl">
-						<h2
+						<motion.h2
 							id="community-heading"
 							className="text-2xl sm:text-4xl font-bold tracking-[-0.2em] mt-10"
 							aria-label="EVRO is community governed and open-source"
+							variants={fadeInUp}
 						>
 							<span aria-hidden="true">EVRO IS COMMVNITY GOVERNED AND OPEN-SOVRCE</span>
-						</h2>
-						<p className="text-lg sm:text-xl font-medium mb-3 mx-3">
+						</motion.h2>
+						<motion.p className="text-lg sm:text-xl font-medium mb-3 mx-3" variants={fadeInUp}>
 							THE PROTOCOL OPERATES WITHOUT CENTRAL CUSTODY OR MANAGEMENT. ITS ONLY ROLE IS ALIGNING
 							INCENTIVES AMONG USERS TO FOSTER A TRANSPARENT, SUSTAINABLE DEFI ECOSYSTEM.
-						</p>
+						</motion.p>
 						<br />
-						<div className="flex justify-center">
+						<motion.div className="flex justify-center" variants={fadeInUp}>
 							<Link
 								href="https://t.me/+hofgAYWLewFmM2Zi"
 								target="_blank"
@@ -360,9 +424,9 @@ export default function Home() {
 								<b className="tracking-[-0.2em]">JOIN COMMVNITY</b>
 								<ArrowRight className="w-6 h-6 ml-4 group-hover:translate-x-2 transition-transform duration-300" aria-hidden="true" />
 							</Link>
-						</div>
+						</motion.div>
 					</div>
-				</div>
+				</motion.div>
 			</section>
 
 			{/* Tally Form Section */}

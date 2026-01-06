@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { motion } from "motion/react";
+import { useState } from 'react';
 
 export default function AnimatedHeading() {
 	const [text, setText] = useState({
@@ -9,19 +10,7 @@ export default function AnimatedHeading() {
 		line3: 'VALUE.'
 	});
 
-	useEffect(() => {
-		// Animate letter by letter transformation after initial render
-		const timer = setTimeout(() => {
-			// Transform AUTONOMOUS -> AVTONOMOVS
-			animateTextChange('line1', 'AUTONOMOUS,', 'AVTONOMOVS,', [1, 6, 7]);
-			// Transform SOURCE -> SOVRCE
-			animateTextChange('line2', 'OPEN SOURCE,', 'OPEN SOVRCE,', [10, 12]);
-		}, 500);
-
-		return () => clearTimeout(timer);
-	}, []);
-
-	const animateTextChange = (line: 'line1' | 'line2' | 'line3', original: string, target: string, indices: number[]) => {
+	const animateTextChange = (line: 'line1' | 'line2' | 'line3', target: string, indices: number[]) => {
 		indices.forEach((index, i) => {
 			setTimeout(() => {
 				setText(prev => ({
@@ -34,25 +23,41 @@ export default function AnimatedHeading() {
 
 	const isVLetter = (char: string, line: string, index: number) => {
 		if (char !== 'V') return false;
-		// Check if this V is in a transformed position
 		if (line === text.line1 && text.line1 === 'AVTONOMOVS,') {
-			return index === 1 || index === 8; // A[V]TONOMO[V]S
+			return index === 1 || index === 8;
 		}
 		if (line === text.line2 && text.line2 === 'OPEN SOVRCE,') {
-			return index === 7 || index === 10; // OPEN SO[V]RCE (index 7) and SOU[V]CE (index 10)
+			return index === 7 || index === 10;
 		}
 		return false;
 	};
 
+	const onViewportEnter = () => {
+		// Reset text
+		setText({
+			line1: 'AUTONOMOUS,',
+			line2: 'OPEN SOURCE,',
+			line3: 'VALUE.'
+		});
+
+		// Start animation after a short delay
+		setTimeout(() => {
+			animateTextChange('line1', 'AVTONOMOVS,', [1, 6, 7]);
+			animateTextChange('line2', 'OPEN SOVRCE,', [7, 10]);
+		}, 500);
+	};
+
 	return (
-		<h1
-			className="text-3xl sm:text-4xl xl:text-5xl font-extrabold tracking-[-0.2em] text-gray-900 mb-6 sm:mb-8 leading-tight"
+		<motion.h1
+			className="text-3xl sm:text-4xl xl:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-8 leading-tight -tracking-[0.08em]"
 			aria-label="Autonomous, Open Source, Value."
+			onViewportEnter={onViewportEnter}
+			viewport={{ once: false, amount: 0.5 }}
 		>
 			<span className="inline-block" aria-hidden="true">
 				{text.line1.split('').map((char, i) => (
 					<span
-						key={i}
+						key={`${text.line1}-${i}`}
 						className={`inline-block transition-all duration-500 ${(text.line1 === 'AVTONOMOVS,' && (i === 1 || i === 8))
 							? 'animate-[letterMorph_0.3s_ease-in-out]'
 							: ''
@@ -66,8 +71,8 @@ export default function AnimatedHeading() {
 			<span className="inline-block" aria-hidden="true">
 				{text.line2.split('').map((char, i) => (
 					<span
-						key={i}
-						className={`inline-block transition-all duration-500 ${(text.line2 === 'OPEN SOVRCE,' && i === 7)
+						key={`${text.line2}-${i}`}
+						className={`inline-block transition-all duration-500 ${(text.line2 === 'OPEN SOVRCE,' && (i === 7 || i === 10))
 							? 'animate-[letterMorph_0.3s_ease-in-out]'
 							: ''
 							} ${isVLetter(char, text.line2, i) ? 'text-[#F55874]' : ''}`}
@@ -78,6 +83,6 @@ export default function AnimatedHeading() {
 			</span>
 			<br />
 			<span aria-hidden="true">{text.line3}</span>
-		</h1>
+		</motion.h1>
 	);
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { motion } from "motion/react";
 import Image from 'next/image';
 
 interface AnimatedIconProps {
@@ -20,46 +20,26 @@ export default function AnimatedIcon({
 	className,
 	containerClassName,
 }: AnimatedIconProps) {
-	const [isVisible, setIsVisible] = useState(false);
-	const iconRef = useRef<HTMLDivElement>(null);
-
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			([entry]) => {
-				if (entry.isIntersecting) {
-					setIsVisible(true);
-					observer.disconnect();
-				}
-			},
-			{
-				threshold: 0.1,
-				rootMargin: '0px 0px -50px 0px',
-			}
-		);
-
-		if (iconRef.current) {
-			observer.observe(iconRef.current);
-		}
-
-		return () => {
-			observer.disconnect();
-		};
-	}, []);
-
 	return (
-		<div
-			ref={iconRef}
-			className={containerClassName}
-		>
-			<Image
-				src={src}
-				alt={alt}
-				width={width}
-				height={height}
-				className={`${className} ${isVisible ? 'animate-pop-up' : 'opacity-0 scale-0'}`}
-				aria-hidden="true"
-			/>
+		<div className={containerClassName}>
+			<motion.div
+				initial={{ scale: 0, opacity: 0, y: 20 }}
+				whileInView={{ scale: 1, opacity: 1, y: 0 }}
+				viewport={{ once: true, amount: 0.3 }}
+				transition={{ 
+					duration: 0.6, 
+					ease: [0.34, 1.56, 0.64, 1] // elastic
+				}}
+			>
+				<Image
+					src={src}
+					alt={alt}
+					width={width}
+					height={height}
+					className={className}
+					aria-hidden="true"
+				/>
+			</motion.div>
 		</div>
 	);
 }
-
