@@ -16,6 +16,10 @@ export const metadata: Metadata = {
 	metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.evro.finance"),
 	title: "EVRO",
 	description: "An open-source protocol that maintains synthetic value units through fully decentralized smart-contract mechanics.",
+	icons: {
+		icon: "/EVRO.svg",
+		apple: "/EVRO.svg",
+	},
 	openGraph: {
 		url: "https://www.evro.finance/",
 		type: "website",

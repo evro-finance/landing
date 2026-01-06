@@ -4,14 +4,9 @@
   "description": "An open-source protocol that maintains synthetic value units through fully decentralized smart-contract mechanics.",
   "icons": [
     {
-      "src": "/android-chrome-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/android-chrome-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "/EVRO.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
   ],
   "theme_color": "#ffffff",
