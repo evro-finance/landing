@@ -150,7 +150,7 @@ export default function Home() {
 					</div>
 					<div className="max-w-7xl mx-auto w-full relative z-10">
 						<AnimatedHeading />
-						<p className="text-lg sm:text-xl md:text-2xl font-light mt-12 lg:mt-0 h-full max-w-xl">
+						<p className="text-lg sm:text-xl md:text-2xl font-light mt-12 lg:mt-0 h-full max-w-md md:max-w-lg lg:max-w-xl">
 							<b className="font-bold">EVRO</b> is an open-source protocol deployed on Gnosis that enables you to <b className="font-bold">create,
 								manage and balance collateralized vaults</b> without issuers, custodians, or intermediaries.
 							Built on Liquity V2 principles, EVRO operates through fully decentralized smart contracts with no administrative control and no upgrade authority.
@@ -324,6 +324,7 @@ export default function Home() {
 					>
 						{coreFeatures.map((feature, index) => {
 							const baseClasses = "bg-[#ECF2E8BF] p-8 md:p-12 text-gray-900 flex flex-col justify-start min-h-[400px] pt-24";
+							const isMulti = feature.icon.includes("multi.svg");
 
 							return (
 								<motion.div
@@ -335,9 +336,9 @@ export default function Home() {
 										<Image
 											src={feature.icon}
 											alt=""
-											width={80}
-											height={80}
-											className="h-full w-auto object-contain max-h-[140px]"
+											width={isMulti ? 64 : 80}
+											height={isMulti ? 64 : 80}
+											className={`h-full w-auto object-fill ${isMulti ? "lg:max-w-[160px]" : "lg:max-w-[200px]"}`}
 										/>
 									</div>
 									<div className="space-y-6">
