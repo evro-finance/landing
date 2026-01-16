@@ -49,7 +49,7 @@ export default function AnimatedHeading() {
 
 	return (
 		<motion.h1
-			className="text-3xl sm:text-4xl xl:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-8 leading-tight -tracking-[0.08em]"
+			className="text-3xl sm:text-4xl xl:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-8 leading-tight -tracking-[0.16em]"
 			aria-label="Autonomous, Open Source, Value."
 			onViewportEnter={onViewportEnter}
 			viewport={{ once: false, amount: 0.5 }}

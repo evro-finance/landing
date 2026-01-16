@@ -150,9 +150,9 @@ export default function Home() {
 					</div>
 					<div className="max-w-7xl mx-auto w-full relative z-10">
 						<AnimatedHeading />
-						<p className="text-lg xl:text-xl font-light text-gray-900 max-w-lg">
-							<b className="font-bold">EVRO</b> is an open-source protocol deployed on Gnosis that enables you to <b className="font-bold">CREATE,
-								MANAGE AND BALANCE COLLATERALIZED VAULTS</b> without issuers, custodians, or intermediaries.
+						<p className="text-lg sm:text-xl md:text-2xl font-light mt-12 lg:mt-0 h-full max-w-xl">
+							<b className="font-bold">EVRO</b> is an open-source protocol deployed on Gnosis that enables you to <b className="font-bold">create,
+								manage and balance collateralized vaults</b> without issuers, custodians, or intermediaries.
 							Built on Liquity V2 principles, EVRO operates through fully decentralized smart contracts with no administrative control and no upgrade authority.
 						</p>
 						<br />
