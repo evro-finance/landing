@@ -2,7 +2,6 @@
 
 import AlertForm from "@/components/AlertForm";
 import AnimatedHeading from "@/components/AnimatedHeading";
-import AnimatedIcon from "@/components/AnimatedIcon";
 import RollingCounter from "@/components/RollingCounter";
 import { ArrowRight, Bell } from "lucide-react";
 import Image from "next/image";
@@ -14,7 +13,7 @@ import { useRef } from "react";
 const fadeInUp = {
 	initial: { opacity: 0, y: 30 },
 	whileInView: { opacity: 1, y: 0 },
-	transition: { duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }
+	transition: { duration: 1.2, ease: "easeOut" }
 };
 
 const staggerContainer = {
@@ -24,18 +23,6 @@ const staggerContainer = {
 			staggerChildren: 0.1
 		}
 	}
-};
-
-const slideInLeft = {
-	initial: { opacity: 0, x: -50 },
-	whileInView: { opacity: 1, x: 0 },
-	transition: { duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }
-};
-
-const slideInRight = {
-	initial: { opacity: 0, x: 50 },
-	whileInView: { opacity: 1, x: 0 },
-	transition: { duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }
 };
 
 const stats = [
@@ -60,25 +47,25 @@ const coreFeatures = [
 	{
 		title: "Stability Pools",
 		description: "Autonomous pools distribute collateral proceeds according to deterministic smart contract rules. No discretionary control or managed yield.",
-		icon: "/assets/stability-pools.svg",
+		icon: "/assets/features/stability.svg",
 		offset: "",
 	},
 	{
 		title: "Mvlti-Collateral Mechanism",
 		description: "Vaults automatically generate synthetic value units backed by digital collateral. All parameters are enforced on-chain and transparent to every participant.",
-		icon: "/assets/multi.svg",
+		icon: "/assets/features/multi.svg",
 		offset: "md:translate-y-32",
 	},
 	{
 		title: "Seamless Integration",
 		description: "Designed for composability, wallets, interfaces, and DeFi tools can interact with EVRO contracts directly through permissionless endpoints.",
-		icon: "/assets/seamless.svg",
+		icon: "/assets/features/seamless.svg",
 		offset: "",
 	},
 	{
 		title: "Immvtable Protocol",
 		description: "EVRO's contracts operate without administrative control or upgrade authority. The immutability of the protocol is a foundational primitive that digital economies can rely on for predictable, censorship-resistant liquidity.",
-		icon: "/assets/immutable.svg",
+		icon: "/assets/features/immutable.svg",
 		offset: "md:translate-y-32",
 	},
 ];
@@ -336,25 +323,23 @@ export default function Home() {
 						viewport={{ once: true, amount: 0.1 }}
 					>
 						{coreFeatures.map((feature, index) => {
-							const baseClasses = "bg-[#ECF2E8BF] p-8 md:p-12 text-gray-900 flex flex-col justify-start min-h-[400px]";
-
-							// Zigzag: left, right, left, right
-							const variant = index % 2 === 0 ? slideInLeft : slideInRight;
+							const baseClasses = "bg-[#ECF2E8BF] p-8 md:p-12 text-gray-900 flex flex-col justify-start min-h-[400px] pt-24";
 
 							return (
 								<motion.div
 									key={feature.title}
 									className={`${baseClasses} ${feature.offset}`}
-									variants={variant}
+									variants={fadeInUp}
 								>
-									<AnimatedIcon
-										src={feature.icon}
-										alt=""
-										width={120}
-										height={120}
-										containerClassName="mb-12 h-32 w-full flex items-center justify-start"
-										className="h-full w-auto object-contain max-h-[140px]"
-									/>
+									<div className="mb-12 w-full flex items-center justify-center">
+										<Image
+											src={feature.icon}
+											alt=""
+											width={80}
+											height={80}
+											className="h-full w-auto object-contain max-h-[140px]"
+										/>
+									</div>
 									<div className="space-y-6">
 										<h3 className="text-2xl sm:text-3xl xl:text-4xl font-bold tracking-[-0.2em] leading-tight">
 											{feature.title}
